@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shouty", "Shouty\Shouty.csproj", "{EAC66A52-BCB1-4020-9CDB-EB4BBF75A26E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shouty.Specs", "Shouty.Specs\Shouty.Specs.csproj", "{69C12D33-56F6-40C2-86E9-6A022BEE0DD1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAC66A52-BCB1-4020-9CDB-EB4BBF75A26E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAC66A52-BCB1-4020-9CDB-EB4BBF75A26E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAC66A52-BCB1-4020-9CDB-EB4BBF75A26E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAC66A52-BCB1-4020-9CDB-EB4BBF75A26E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69C12D33-56F6-40C2-86E9-6A022BEE0DD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69C12D33-56F6-40C2-86E9-6A022BEE0DD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69C12D33-56F6-40C2-86E9-6A022BEE0DD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69C12D33-56F6-40C2-86E9-6A022BEE0DD1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
