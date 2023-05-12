@@ -10,10 +10,6 @@ public class Person
         _network = network;
         _network.Subscribe(this);
     }
-    public void MoveTo(int distance)
-    {
-
-    }
 
     public void Shout(string message)
     {
