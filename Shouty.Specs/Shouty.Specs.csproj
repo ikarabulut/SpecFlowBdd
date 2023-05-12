@@ -29,8 +29,4 @@
     <ProjectReference Include="..\Shouty\Shouty.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Support" />
-  </ItemGroup>
-
 </Project>

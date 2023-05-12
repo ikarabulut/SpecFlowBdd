@@ -5,16 +5,16 @@ namespace Shouty.Specs.StepDefinitions;
 [Binding]
 public partial class StepDefinitions
 {
-    private Person _lucy = new Person();
-    private Person _sean = new Person();
+    private Person _lucy = new Person("Lucy");
+    private Person _sean = new Person("Sean");
 
     private string _messageFromSean;
 
-    [Given("Lucy is located/standing {int} meters(s) from Sean")]
-    public void GivenLucyIsLocatedThisFarFromSean(int distance)
+    [Given("{Person} is located/standing {int} meters(s) from Sean")]
+    public void GivenPersonIsLocatedThisFarFromSean(Person person, int distance)
     {
 
-        _lucy.MoveTo(distance);
+        person.MoveTo(distance);
     }
 
     [When("Sean shouts {string}")]
@@ -24,8 +24,8 @@ public partial class StepDefinitions
         _messageFromSean = message;
     }
 
-    [Then("Lucy hears Sean's message")]
-    public void ThenLucyHearsSeansMessage()
+    [Then("{Person} hears Sean's message")]
+    public void ThenPersonHearsSeansMessage(Person person)
     {
         Assert.Contains(_messageFromSean, _lucy.GetMessagesHeard());
     }

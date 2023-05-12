@@ -2,6 +2,10 @@ namespace Shouty;
 
 public class Person
 {
+    public Person(string name)
+    {
+
+    }
     public void MoveTo(int distance)
     {
 
