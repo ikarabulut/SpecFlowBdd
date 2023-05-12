@@ -1,3 +1,5 @@
+using System.Net.NetworkInformation;
+
 using TechTalk.SpecFlow;
 
 namespace Shouty.Specs.StepDefinitions;
@@ -5,16 +7,17 @@ namespace Shouty.Specs.StepDefinitions;
 [Binding]
 public partial class StepDefinitions
 {
-    private Person _lucy = new Person("Lucy");
-    private Person _sean = new Person("Sean");
-
+    private Person _lucy;
+    private Person _sean;
     private string _messageFromSean;
 
-    [Given("{Person} is located/standing {int} meters(s) from Sean")]
-    public void GivenPersonIsLocatedThisFarFromSean(Person person, int distance)
+    [Given("Lucy is located/standing {int} meter(s) from Sean")]
+    public void GivenPersonIsLocatedThisFarFromSean(int distance)
     {
-
-        person.MoveTo(distance);
+        var network = new Network();
+        _sean = new Person(network);
+        _lucy = new Person(network);
+        _lucy.MoveTo(distance);
     }
 
     [When("Sean shouts {string}")]
@@ -24,8 +27,8 @@ public partial class StepDefinitions
         _messageFromSean = message;
     }
 
-    [Then("{Person} hears Sean's message")]
-    public void ThenPersonHearsSeansMessage(Person person)
+    [Then("Lucy hears Sean's message")]
+    public void ThenPersonHearsSeansMessage()
     {
         Assert.Contains(_messageFromSean, _lucy.GetMessagesHeard());
     }
