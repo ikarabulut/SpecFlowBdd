@@ -1,7 +1,13 @@
 Feature: Hear Shout
 
 @mytag
-Scenario: Listener is within range
-	Given Lucy is located 15m from Sean
+Scenario: Listener is located within range
+	Given Lucy is located 15 meters from Sean
 	When Sean shouts "free bagels at Sean's"
 	Then Lucy hears Sean's message
+
+
+Scenario: Listener is standing within range
+    Given Lucy is standing 15 meters from Sean
+    When Sean shouts "free bagels at Sean's"
+    Then Lucy hears Sean's message
