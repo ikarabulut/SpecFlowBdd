@@ -2,27 +2,29 @@ namespace Shouty;
 
 public class Person
 {
-    private readonly Network _network;
-    private readonly List<string> _messagesHeard = new();
+    private readonly Network network;
+    private readonly List<string> messagesHeard = new List<string>();
+    public int Location { get; }
 
-    public Person(Network network)
+    public Person(Network network, int location)
     {
-        _network = network;
-        _network.Subscribe(this);
+        this.network = network;
+        this.Location = location;
+        network.Subscribe(this);
     }
 
     public void Shout(string message)
     {
-        _network.Broadcast(message);
+        network.Broadcast(message, Location);
     }
 
-    public IEnumerable<string> GetMessagesHeard()
+    public IList<string> GetMessagesHeard()
     {
-        return _messagesHeard;
+        return messagesHeard;
     }
 
     public void Hear(string message)
     {
-        _messagesHeard.Add(message);
+        messagesHeard.Add(message);
     }
 }

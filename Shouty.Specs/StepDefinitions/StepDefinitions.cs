@@ -7,35 +7,45 @@ namespace Shouty.Specs.StepDefinitions;
 [Binding]
 public partial class StepDefinitions
 {
-    private Person _lucy;
-    private Person _sean;
-    private string _messageFromSean;
-    private Network _network;
-    private Dictionary<string, Person> _people;
+    private string messageFromSean;
+    private Network network;
+    private Dictionary<string, Person> people;
 
     [BeforeScenario]
     public void CreateNetwork()
     {
-        _network = new Network();
-        _people = new Dictionary<string, Person>();
+        people = new Dictionary<string, Person>();
+    }
+
+    [Given("the range is {int}")]
+    public void GivenTheRangeIs(int range)
+    {
+        network = new Network(range);
+    }
+
+    [Given("a person named {word} is located at {int}")]
+    public void GivenAPersonNamedIsLocatedAt(string name, int location)
+    {
+        people.Add(name, new Person(network, location));
     }
 
     [When("Sean shouts {string}")]
     public void WhenSeanShouts(string message)
     {
-        _people["Sean"].Shout(message);
-        _messageFromSean = message;
+        people["Sean"].Shout(message);
+        messageFromSean = message;
     }
 
-    [Then("Lucy hears Sean's message")]
-    public void ThenPersonHearsSeansMessage()
+    [Then("Lucy should hear Sean's message")]
+    public void ThenLucyShouldHearSeansMessage()
     {
-        Assert.Contains(_messageFromSean, _people["Lucy"].GetMessagesHeard());
+        Assert.Contains(messageFromSean, people["Lucy"].GetMessagesHeard());
     }
 
-    [Given("a person named {word}")]
-    public void GivenAPersonNamedLucy(string name)
+    [Then("Larry should not hear Sean's message")]
+    public void ThenLarryShouldNotHearSeansMessage()
     {
-        _people.Add(name, new Person(_network));
+        var heardByLarry = people["Larry"].GetMessagesHeard();
+        Assert.DoesNotContain(messageFromSean, heardByLarry);
     }
 }
